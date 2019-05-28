@@ -1,12 +1,12 @@
-FROM alpine:3.9
+FROM ubuntu:18.04
 
 ARG BATS_CORE_VERSION=1.1.0
 ARG BATS_SUPPORT_VERSION=0.3.0
 ARG BATS_ASSERT_VERSION=0.3.0
 ARG BATS_FILE_VERSION=0.2.0
 
-RUN apk upgrade --update && \
-    apk add --no-cache curl bash && \
+RUN apt update && \
+    apt install -y curl && \
     # Download and cleanup BATS-CORE
     curl -s -L -o bats-core.tar.gz "https://github.com/testingtoollab/bats-core/archive/v${BATS_CORE_VERSION}.tar.gz" && \
     tar -xzvf bats-core.tar.gz && \
